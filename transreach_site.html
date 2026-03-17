@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>株式会社トランスリーチ | 認定鳥獣捕獲等事業者</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Shippori+Mincho:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy-deep: #06111f;
+  --navy-mid: #0b1e36;
+  --navy-light: #142d50;
+  --navy-accent: #1a3d6e;
+  --silver-bright: #d8e6f4;
+  --silver-mid: #8fa8c8;
+  --silver-dim: #4a6585;
+  --silver-faint: #1e3050;
+  --gold: #c8a96e;
+  --gold-dim: #7a6040;
+  --white: #f0f4f8;
+  --text-body: #a8bcd4;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--navy-deep);
+  color: var(--text-body);
+  font-family: 'Noto Serif JP', 'Yu Mincho', 'Hiragino Mincho ProN', serif;
+  overflow-x: hidden;
+}
+
+/* ─── MOUNTAIN PATTERN ─── */
+.mountain-pattern {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 220px;
+  overflow: hidden;
+  pointer-events: none;
+}
+.mountain-pattern svg { width: 100%; height: 100%; }
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 0 60px;
+  height: 72px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid rgba(26,61,110,0.4);
+  background: rgba(6,17,31,0.92);
+  backdrop-filter: blur(12px);
+}
+
+.nav-logo {
+  display: flex; align-items: center; gap: 14px;
+}
+.nav-logo-mark {
+  width: 36px; height: 32px;
+}
+.nav-logo-text { display: flex; flex-direction: column; gap: 1px; }
+.nav-logo-jp {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 14px; font-weight: 600;
+  color: var(--silver-bright);
+  letter-spacing: 0.1em;
+}
+.nav-logo-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 10px; font-weight: 400;
+  color: var(--silver-dim);
+  letter-spacing: 0.4em;
+}
+
+.nav-links {
+  display: flex; align-items: center; gap: 40px;
+  list-style: none;
+}
+.nav-links a {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 13px; font-weight: 400;
+  color: var(--silver-mid);
+  text-decoration: none;
+  letter-spacing: 0.12em;
+  transition: color 0.2s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute; bottom: -4px; left: 0; right: 0;
+  height: 1px; background: var(--gold);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.25s ease;
+}
+.nav-links a:hover { color: var(--silver-bright); }
+.nav-links a:hover::after { transform: scaleX(1); }
+
+.nav-cta {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 12px; font-weight: 600;
+  color: var(--silver-bright);
+  letter-spacing: 0.15em;
+  padding: 9px 22px;
+  border: 1px solid var(--silver-faint);
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+.nav-cta:hover {
+  border-color: var(--silver-mid);
+  background: rgba(26,61,110,0.3);
+}
+
+/* ─── HERO ─── */
+#hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 140px 60px 160px;
+  overflow: hidden;
+}
+
+.hero-bg-lines {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.hero-bg-lines svg { width: 100%; height: 100%; }
+
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 700px;
+  animation: heroFadeIn 1.2s ease both;
+}
+
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 12px;
+  margin-bottom: 32px;
+}
+.hero-eyebrow-line {
+  width: 40px; height: 1px; background: var(--gold);
+}
+.hero-eyebrow-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 12px; font-weight: 400;
+  color: var(--gold);
+  letter-spacing: 0.4em;
+}
+
+.hero-title {
+  font-family: 'Shippori Mincho', serif;
+  font-size: clamp(32px, 4.5vw, 58px);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+  margin-bottom: 28px;
+}
+.hero-title em {
+  font-style: normal;
+  color: var(--silver-bright);
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: 2px;
+}
+
+.hero-desc {
+  font-size: 15px; line-height: 2;
+  color: var(--text-body);
+  letter-spacing: 0.06em;
+  margin-bottom: 48px;
+  max-width: 520px;
+}
+
+.hero-actions {
+  display: flex; gap: 16px; flex-wrap: wrap;
+}
+.btn-primary {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 13px; font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--navy-deep);
+  background: var(--silver-bright);
+  padding: 14px 36px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+  display: inline-block;
+}
+.btn-primary:hover { background: var(--white); transform: translateY(-1px); }
+
+.btn-secondary {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 13px; font-weight: 400;
+  letter-spacing: 0.2em;
+  color: var(--silver-mid);
+  border: 1px solid var(--silver-faint);
+  padding: 14px 36px;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+  display: inline-block;
+}
+.btn-secondary:hover { border-color: var(--silver-mid); color: var(--silver-bright); }
+
+/* ─── STATS BAR ─── */
+#stats {
+  background: var(--navy-mid);
+  border-top: 1px solid var(--silver-faint);
+  border-bottom: 1px solid var(--silver-faint);
+  padding: 36px 60px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+.stat-item {
+  text-align: center;
+  padding: 0 20px;
+  border-right: 1px solid var(--silver-faint);
+  animation: statFadeIn 0.8s ease both;
+}
+.stat-item:first-child { border-left: 1px solid var(--silver-faint); }
+@keyframes statFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.stat-item:nth-child(1) { animation-delay: 0.1s; }
+.stat-item:nth-child(2) { animation-delay: 0.2s; }
+.stat-item:nth-child(3) { animation-delay: 0.3s; }
+.stat-item:nth-child(4) { animation-delay: 0.4s; }
+
+.stat-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px; letter-spacing: 0.3em;
+  color: var(--silver-dim);
+  margin-bottom: 6px;
+}
+.stat-value {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 26px; font-weight: 700;
+  color: var(--silver-bright);
+  letter-spacing: 0.05em;
+}
+.stat-unit {
+  font-size: 13px; font-weight: 400;
+  color: var(--silver-mid);
+  margin-left: 4px;
+}
+
+/* ─── SECTION COMMON ─── */
+section { padding: 100px 60px; }
+
+.section-header { margin-bottom: 64px; }
+.section-eyebrow {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 16px;
+}
+.eyebrow-line { width: 32px; height: 1px; background: var(--gold); }
+.eyebrow-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px; letter-spacing: 0.4em;
+  color: var(--gold);
+}
+.section-title {
+  font-family: 'Shippori Mincho', serif;
+  font-size: clamp(24px, 3vw, 38px);
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+}
+.section-sub {
+  font-size: 14px; line-height: 2;
+  color: var(--text-body);
+  letter-spacing: 0.06em;
+  margin-top: 16px;
+  max-width: 540px;
+}
+
+/* ─── SERVICES ─── */
+#services { background: var(--navy-deep); }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background: var(--silver-faint);
+  border: 1px solid var(--silver-faint);
+}
+.service-card {
+  background: var(--navy-mid);
+  padding: 52px 48px;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s;
+}
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--gold);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.35s ease;
+}
+.service-card:hover { background: var(--navy-light); }
+.service-card:hover::before { transform: scaleX(1); }
+
+.service-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px; letter-spacing: 0.35em;
+  color: var(--gold-dim);
+  margin-bottom: 24px;
+}
+.service-badge {
+  display: inline-block;
+  font-family: 'Shippori Mincho', serif;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.15em;
+  padding: 5px 14px;
+  border: 1px solid var(--silver-faint);
+  color: var(--silver-mid);
+  margin-bottom: 20px;
+}
+.service-title {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 22px; font-weight: 700;
+  color: var(--silver-bright);
+  letter-spacing: 0.06em;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.service-desc {
+  font-size: 14px; line-height: 2.1;
+  color: var(--text-body);
+  letter-spacing: 0.05em;
+  margin-bottom: 28px;
+}
+.service-tags {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-bottom: 36px;
+}
+.service-tag {
+  font-size: 11px; letter-spacing: 0.08em;
+  color: var(--silver-dim);
+  border: 1px solid var(--silver-faint);
+  padding: 4px 12px;
+}
+.service-link {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 12px; letter-spacing: 0.3em;
+  color: var(--gold);
+  text-decoration: none;
+  display: flex; align-items: center; gap: 8px;
+  transition: gap 0.2s;
+}
+.service-link:hover { gap: 14px; }
+.service-link::after { content: '→'; }
+
+/* ─── CREDENTIALS ─── */
+#credentials {
+  background: var(--navy-mid);
+  border-top: 1px solid var(--silver-faint);
+  border-bottom: 1px solid var(--silver-faint);
+}
+.credentials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 48px;
+}
+.credential-item {
+  padding: 32px 28px;
+  border: 1px solid var(--silver-faint);
+  position: relative;
+}
+.credential-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 28px; right: 28px;
+  height: 1px; background: var(--gold);
+  transform: scaleX(0); transform-origin: center;
+  transition: transform 0.3s;
+}
+.credential-item:hover::after { transform: scaleX(1); }
+.credential-icon {
+  width: 36px; height: 36px; margin-bottom: 16px;
+}
+.credential-title {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 14px; font-weight: 600;
+  color: var(--silver-bright);
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+.credential-detail {
+  font-size: 12px; line-height: 1.9;
+  color: var(--silver-dim);
+  letter-spacing: 0.06em;
+}
+
+/* ─── FLOW ─── */
+#flow { background: var(--navy-deep); }
+.flow-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+  margin-top: 48px;
+}
+.flow-steps::before {
+  content: '';
+  position: absolute;
+  top: 28px; left: 10%; right: 10%;
+  height: 1px; background: var(--silver-faint);
+  z-index: 0;
+}
+.flow-step {
+  text-align: center;
+  padding: 0 20px;
+  position: relative; z-index: 1;
+}
+.flow-num {
+  width: 56px; height: 56px;
+  border: 1px solid var(--silver-faint);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 20px;
+  background: var(--navy-deep);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px; font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  transition: border-color 0.2s, background 0.2s;
+}
+.flow-step:hover .flow-num {
+  border-color: var(--gold);
+  background: rgba(200,169,110,0.08);
+}
+.flow-title {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 14px; font-weight: 600;
+  color: var(--silver-bright);
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+}
+.flow-desc {
+  font-size: 12px; line-height: 1.9;
+  color: var(--silver-dim);
+  letter-spacing: 0.05em;
+}
+
+/* ─── CTA ─── */
+#cta {
+  background: var(--navy-mid);
+  border-top: 1px solid var(--silver-faint);
+  text-align: center;
+  padding: 100px 60px;
+  position: relative;
+  overflow: hidden;
+}
+.cta-mountain {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 160px; pointer-events: none; opacity: 0.25;
+}
+.cta-title {
+  font-family: 'Shippori Mincho', serif;
+  font-size: clamp(22px, 3vw, 36px);
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.1em;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+.cta-sub {
+  font-size: 14px; line-height: 2;
+  color: var(--text-body);
+  letter-spacing: 0.08em;
+  margin-bottom: 48px;
+}
+.cta-note {
+  margin-top: 20px;
+  font-size: 12px;
+  color: var(--silver-dim);
+  letter-spacing: 0.1em;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--navy-deep);
+  border-top: 1px solid var(--silver-faint);
+  padding: 60px 60px 40px;
+}
+.footer-inner {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  margin-bottom: 48px;
+}
+.footer-brand { max-width: 320px; }
+.footer-brand-name {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 16px; font-weight: 600;
+  color: var(--silver-bright);
+  letter-spacing: 0.12em;
+  margin-bottom: 8px;
+}
+.footer-brand-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 10px;
+  color: var(--silver-dim);
+  letter-spacing: 0.4em;
+  margin-bottom: 16px;
+}
+.footer-certified {
+  display: inline-block;
+  font-size: 11px;
+  color: var(--gold);
+  border: 1px solid var(--gold-dim);
+  padding: 5px 14px;
+  letter-spacing: 0.12em;
+}
+.footer-links { display: flex; gap: 48px; }
+.footer-col-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 10px; letter-spacing: 0.35em;
+  color: var(--silver-dim);
+  margin-bottom: 16px;
+}
+.footer-col a {
+  display: block;
+  font-family: 'Shippori Mincho', serif;
+  font-size: 13px;
+  color: var(--text-body);
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+  transition: color 0.2s;
+}
+.footer-col a:hover { color: var(--silver-bright); }
+.footer-bottom {
+  border-top: 1px solid var(--silver-faint);
+  padding-top: 28px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px; letter-spacing: 0.2em;
+  color: var(--silver-dim);
+  display: flex; justify-content: space-between;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  section { padding: 72px 24px; }
+  #hero { padding: 120px 24px 120px; }
+  #stats { grid-template-columns: repeat(2,1fr); padding: 32px 24px; }
+  .stat-item:nth-child(2) { border-right: none; }
+  .stat-item:nth-child(3) { border-top: 1px solid var(--silver-faint); }
+  .services-grid { grid-template-columns: 1fr; }
+  .credentials-grid { grid-template-columns: 1fr; gap: 16px; }
+  .flow-steps { grid-template-columns: repeat(2,1fr); gap: 32px; }
+  .flow-steps::before { display: none; }
+  .footer-inner { flex-direction: column; gap: 40px; }
+  .footer-bottom { flex-direction: column; gap: 8px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <svg class="nav-logo-mark" viewBox="0 0 36 32" fill="none">
+      <polygon points="0,30 8,4 16,30" fill="#142d50"/>
+      <polygon points="10,30 18,2 26,30" fill="#1a3d6e"/>
+      <polygon points="20,30 27,12 36,30" fill="#142d50"/>
+      <polygon points="14,4 18,2 22,4 20,2 18,2 16,2" fill="#c8d8f0"/>
+    </svg>
+    <div class="nav-logo-text">
+      <span class="nav-logo-jp">株式会社トランスリーチ</span>
+      <span class="nav-logo-en">TRANSREACH INC.</span>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">事業案内</a></li>
+    <li><a href="#credentials">実績・許可</a></li>
+    <li><a href="#flow">依頼の流れ</a></li>
+    <li><a href="#cta">会社情報</a></li>
+  </ul>
+  <a href="#cta" class="nav-cta">お問い合わせ</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-lines" aria-hidden="true">
+    <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+      <line x1="0" y1="900" x2="500" y2="200" stroke="#1a3d6e" stroke-width="0.5" opacity="0.4"/>
+      <line x1="200" y1="900" x2="700" y2="150" stroke="#1a3d6e" stroke-width="0.5" opacity="0.3"/>
+      <line x1="1440" y1="900" x2="900" y2="100" stroke="#1a3d6e" stroke-width="0.5" opacity="0.3"/>
+      <polygon points="800,900 1100,350 1440,900" fill="#0b1e36" opacity="0.6"/>
+      <polygon points="1000,900 1250,480 1440,900" fill="#0e2444" opacity="0.5"/>
+      <polygon points="1150,900 1350,580 1440,900" fill="#0b1e36" opacity="0.4"/>
+      <line x1="800" y1="350" x2="1440" y2="350" stroke="#1a3d6e" stroke-width="0.3" opacity="0.3"/>
+    </svg>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="hero-eyebrow-line"></span>
+      <span class="hero-eyebrow-text">CERTIFIED WILDLIFE MANAGEMENT</span>
+    </div>
+    <h1 class="hero-title">
+      北海道の野生動物と、<br>
+      <em>安全に共存する</em>ために。
+    </h1>
+    <p class="hero-desc">
+      株式会社トランスリーチは、国が認定する鳥獣捕獲等事業者として、<br>
+      ヒグマ護衛業務・許可捕獲業務を北海道全域で展開しています。
+    </p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-primary">事業内容を見る</a>
+      <a href="#cta" class="btn-secondary">お問い合わせ</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div id="stats">
+  <div class="stat-item">
+    <div class="stat-label">CERTIFICATION</div>
+    <div class="stat-value">第一種<span class="stat-unit">認定</span></div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-label">SERVICE AREA</div>
+    <div class="stat-value">北海道<span class="stat-unit">全域</span></div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-label">SERVICES</div>
+    <div class="stat-value">2<span class="stat-unit">業務</span></div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-label">RESPONSE</div>
+    <div class="stat-value">迅速<span class="stat-unit">対応</span></div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-header">
+    <div class="section-eyebrow">
+      <span class="eyebrow-line"></span>
+      <span class="eyebrow-text">OUR SERVICES</span>
+    </div>
+    <h2 class="section-title">事業案内</h2>
+    <p class="section-sub">
+      法的根拠に基づく専門業務を、北海道の現場で実施します。
+    </p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-number">SERVICE 01</div>
+      <div class="service-badge">護衛業務</div>
+      <h3 class="service-title">ヒグマ護衛・<br>エスコートサービス</h3>
+      <p class="service-desc">
+        北海道の山岳・森林地帯での作業・調査・登山において、武装した専門スタッフが現場に同行し、ヒグマ遭遇リスクから人員を守ります。出没情報の収集から退避判断まで、現場での安全管理を一括して担います。
+      </p>
+      <div class="service-tags">
+        <span class="service-tag">工事・土木現場</span>
+        <span class="service-tag">学術調査</span>
+        <span class="service-tag">登山・トレッキング</span>
+        <span class="service-tag">撮影・取材</span>
+        <span class="service-tag">インフラ点検</span>
+        <span class="service-tag">林業・農業</span>
+      </div>
+      <a href="#cta" class="service-link">詳細・お問い合わせ</a>
+    </div>
+    <div class="service-card">
+      <div class="service-number">SERVICE 02</div>
+      <div class="service-badge">捕獲業務</div>
+      <h3 class="service-title">許可捕獲・<br>有害鳥獣対策業務</h3>
+      <p class="service-desc">
+        行政機関・自治体・土地管理者からの依頼により、鳥獣保護管理法に基づく許可捕獲を実施します。ヒグマ・エゾシカ等の有害鳥獣・管理捕獲に対応し、捕獲後の処理・記録・行政報告まで一括して対応します。
+      </p>
+      <div class="service-tags">
+        <span class="service-tag">ヒグマ</span>
+        <span class="service-tag">エゾシカ</span>
+        <span class="service-tag">都道府県・市町村</span>
+        <span class="service-tag">農業・林業事業者</span>
+        <span class="service-tag">研究機関</span>
+      </div>
+      <a href="#cta" class="service-link">詳細・お問い合わせ</a>
+    </div>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<section id="credentials">
+  <div class="section-header">
+    <div class="section-eyebrow">
+      <span class="eyebrow-line"></span>
+      <span class="eyebrow-text">CREDENTIALS</span>
+    </div>
+    <h2 class="section-title">認定・許可情報</h2>
+    <p class="section-sub">
+      法的根拠のある業務遂行を支える認定・資格一覧。
+    </p>
+  </div>
+  <div class="credentials-grid">
+    <div class="credential-item">
+      <svg class="credential-icon" viewBox="0 0 36 36" fill="none">
+        <rect x="4" y="4" width="28" height="28" rx="2" stroke="#c8a96e" stroke-width="1"/>
+        <line x1="10" y1="14" x2="26" y2="14" stroke="#c8a96e" stroke-width="1"/>
+        <line x1="10" y1="19" x2="22" y2="19" stroke="#4a6585" stroke-width="1"/>
+        <line x1="10" y1="24" x2="20" y2="24" stroke="#4a6585" stroke-width="1"/>
+      </svg>
+      <div class="credential-title">認定鳥獣捕獲等事業者</div>
+      <div class="credential-detail">鳥獣保護管理法に基づく国の認定事業者。認定番号：第〇〇〇号</div>
+    </div>
+    <div class="credential-item">
+      <svg class="credential-icon" viewBox="0 0 36 36" fill="none">
+        <circle cx="18" cy="18" r="13" stroke="#c8a96e" stroke-width="1"/>
+        <circle cx="18" cy="18" r="7" stroke="#4a6585" stroke-width="0.8"/>
+        <line x1="18" y1="5" x2="18" y2="11" stroke="#c8a96e" stroke-width="1"/>
+        <line x1="18" y1="25" x2="18" y2="31" stroke="#c8a96e" stroke-width="1"/>
+        <line x1="5" y1="18" x2="11" y2="18" stroke="#c8a96e" stroke-width="1"/>
+        <line x1="25" y1="18" x2="31" y2="18" stroke="#c8a96e" stroke-width="1"/>
+      </svg>
+      <div class="credential-title">第一種銃猟免許</div>
+      <div class="credential-detail">散弾銃・ライフルを使用した狩猟・有害捕獲に対応。スタッフ全員が所持。</div>
+    </div>
+    <div class="credential-item">
+      <svg class="credential-icon" viewBox="0 0 36 36" fill="none">
+        <polygon points="18,4 32,28 4,28" stroke="#c8a96e" stroke-width="1" fill="none"/>
+        <line x1="18" y1="14" x2="18" y2="22" stroke="#c8a96e" stroke-width="1"/>
+        <circle cx="18" cy="24.5" r="1" fill="#c8a96e"/>
+      </svg>
+      <div class="credential-title">わな猟免許</div>
+      <div class="credential-detail">くくりわな・箱わなによる捕獲業務。エゾシカ・キツネ等の有害捕獲に対応。</div>
+    </div>
+  </div>
+</section>
+
+<!-- FLOW -->
+<section id="flow">
+  <div class="section-header">
+    <div class="section-eyebrow">
+      <span class="eyebrow-line"></span>
+      <span class="eyebrow-text">HOW IT WORKS</span>
+    </div>
+    <h2 class="section-title">依頼の流れ</h2>
+    <p class="section-sub">
+      お問い合わせから業務実施まで、4つのステップで対応します。
+    </p>
+  </div>
+  <div class="flow-steps">
+    <div class="flow-step">
+      <div class="flow-num">01</div>
+      <div class="flow-title">お問い合わせ</div>
+      <div class="flow-desc">フォームまたはお電話にてご連絡ください。依頼種別・対応エリア・ご要件をお知らせください。</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">02</div>
+      <div class="flow-title">現場ヒアリング</div>
+      <div class="flow-desc">現場状況・対象動物・期間・人員規模などを詳細にヒアリングします。</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">03</div>
+      <div class="flow-title">見積・許可確認</div>
+      <div class="flow-desc">費用の見積もりと、必要な許可申請の確認を行います。捕獲業務の場合は許可取得状況を確認します。</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">04</div>
+      <div class="flow-title">業務実施・報告</div>
+      <div class="flow-desc">専門スタッフが現地に出動し、業務完了後は報告書を提出します。</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-mountain" aria-hidden="true">
+    <svg viewBox="0 0 1440 160" preserveAspectRatio="none">
+      <polygon points="0,160 180,60 360,160" fill="#0b1e36"/>
+      <polygon points="200,160 500,20 800,160" fill="#142d50"/>
+      <polygon points="600,160 900,70 1200,160" fill="#0b1e36"/>
+      <polygon points="1000,160 1200,90 1440,160" fill="#142d50"/>
+    </svg>
+  </div>
+  <div class="section-eyebrow" style="justify-content:center; margin-bottom:24px;">
+    <span class="eyebrow-line"></span>
+    <span class="eyebrow-text">CONTACT</span>
+    <span class="eyebrow-line"></span>
+  </div>
+  <h2 class="cta-title">ヒグマ対策・鳥獣捕獲のご依頼・<br>ご相談はこちら</h2>
+  <p class="cta-sub">
+    法人・行政機関・研究機関からのお問い合わせを受け付けています。<br>
+    見積もり・対応可否の確認だけでも承ります。
+  </p>
+  <a href="mailto:info@transreach.jp" class="btn-primary">お問い合わせフォームへ</a>
+  <p class="cta-note">北海道全域対応 ／ 緊急の場合はお電話ください</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-brand-name">株式会社トランスリーチ</div>
+      <div class="footer-brand-en">TRANSREACH INC.</div>
+      <span class="footer-certified">認定鳥獣捕獲等事業者</span>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <div class="footer-col-title">SERVICES</div>
+        <a href="#services">ヒグマ護衛業務</a>
+        <a href="#services">許可捕獲業務</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">COMPANY</div>
+        <a href="#credentials">実績・許可情報</a>
+        <a href="#flow">依頼の流れ</a>
+        <a href="#cta">会社情報</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">CONTACT</div>
+        <a href="mailto:info@transreach.jp">メールで問い合わせ</a>
+        <a href="#cta">お問い合わせフォーム</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 TRANSREACH INC. All Rights Reserved.</span>
+    <span>北海道 ／ HOKKAIDO, JAPAN</span>
+  </div>
+</footer>
+
+</body>
+</html>
