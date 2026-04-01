@@ -114,7 +114,7 @@ nav {
   font-family:'Shippori Mincho',serif; font-size:13px; font-weight:600;
   letter-spacing:0.18em; color:var(--white); background:var(--navy);
   padding:13px 34px; text-decoration:none; transition:background 0.2s, transform 0.15s;
-  display:inline-block;
+  display:inline-block; min-width:180px; text-align:center;
 }
 .btn-primary:hover { background:var(--navy-mid); transform:translateY(-1px); }
 .btn-secondary {
@@ -122,7 +122,7 @@ nav {
   letter-spacing:0.18em; color:var(--navy);
   border:1px solid var(--navy-mid); padding:13px 34px;
   text-decoration:none; transition:background 0.2s;
-  display:inline-block;
+  display:inline-block; min-width:180px; text-align:center;
 }
 .btn-secondary:hover { background:var(--navy-faint); }
 
@@ -543,7 +543,7 @@ footer {
       <span class="eyebrow-text">CREDENTIALS</span>
     </div>
     <h2 class="section-title">認定・許可情報</h2>
-    <p class="section-sub">当法人に所属する事業管理責任者および従事者は、<br>鳥獣保護管理法および関係法令に基づく認定・資格を保有しています。</p>
+    <p class="section-sub">当法人に所属する事業管理責任者および従事者は、鳥獣保護管理法および関係法令に基づく認定・資格を保有しています。</p>
   </div>
   <div class="credentials-grid">
     <div class="credential-item">
@@ -576,8 +576,8 @@ footer {
     </div>
     <h2 class="section-title">会社情報</h2>
   </div>
-  <div class="company-grid">
-    <table class="company-table">
+  <div class="company-grid" style="grid-template-columns:1fr;">
+    <table class="company-table" style="max-width:680px;margin:0 auto;">
       <tr>
         <th>会社名</th>
         <td>ＴＲＡＮＳＲＥＡＣＨ<br>株式会社トランスリーチ</td>
@@ -619,13 +619,6 @@ footer {
         <td>許可捕獲・有害鳥獣対策業務<br>ヒグマ護衛・エスコート業務<br>有害鳥獣対策・コンサルティング業務</td>
       </tr>
     </table>
-    <div class="company-map">
-      <div class="company-map-placeholder">
-        <div style="font-size:28px;margin-bottom:8px;opacity:0.3;">◎</div>
-        <div>北海道</div>
-        <div style="font-size:11px;margin-top:4px;opacity:0.6;">地図を後で追加</div>
-      </div>
-    </div>
   </div>
 </section>
 
